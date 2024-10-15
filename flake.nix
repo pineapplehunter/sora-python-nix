@@ -23,14 +23,19 @@
           inherit system;
           overlays = [ self.overlays.default ];
         };
+      inherit (nixpkgs) lib;
     in
     {
       overlays.default = final: prev: {
-        python312 = prev.python312.override {
-          packageOverrides = python-final: python-prev: {
-            sora-sdk = python-final.callPackage ./package.nix { };
-          };
-        };
+        python312 = prev.python312.override (old: {
+          packageOverrides =
+            let
+              overlay = python-final: python-prev: {
+                sora-sdk = python-final.callPackage ./package.nix { };
+              };
+            in
+            lib.composeExtensions (old.packageOverrides or (_: _: { })) overlay;
+        });
       };
       packages = eachSystem (
         system:
@@ -39,12 +44,6 @@
         in
         {
           default = pkgs.python3.pkgs.sora-sdk;
-          all = pkgs.linkFarm "sora-sdk-all" [
-            {
-              name = "3.12";
-              path = pkgs.python312.pkgs.sora-sdk;
-            }
-          ];
           python = pkgs.python3.withPackages (
             ps:
             builtins.attrValues {
