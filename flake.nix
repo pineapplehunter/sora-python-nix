@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     systems.url = "github:nix-systems/default";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
+    treefmt-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs =
@@ -11,14 +13,10 @@
       self,
       nixpkgs,
       systems,
+      treefmt-nix,
     }:
     let
-      eachSystem = nixpkgs.lib.genAttrs [
-        "aarch64-linux"
-        "x86_64-linux"
-        "aarch64-darwin"
-        "x86_64-darwin"
-      ];
+      eachSystem = nixpkgs.lib.genAttrs (import systems);
       pkgsFor =
         system:
         import nixpkgs {
@@ -58,5 +56,12 @@
         }
       );
       legacyPackages = eachSystem pkgsFor;
+      formatter = eachSystem (
+        system:
+        (treefmt-nix.lib.evalModule (pkgsFor system) {
+          projectRootFile = "flake.nix";
+          programs.nixfmt.enable = true;
+        }).config.build.wrapper
+      );
     };
 }
