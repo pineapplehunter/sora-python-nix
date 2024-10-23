@@ -5,6 +5,7 @@
   libX11,
   libva,
   lib,
+  numpy,
   stdenv,
 }:
 let
@@ -14,23 +15,17 @@ let
     isx86_64
     isAarch64
     ;
+  inherit (lib) optionals;
   platformData =
     if isLinux && isx86_64 then
       {
         platform = "manylinux_2_17_x86_64.manylinux2014_x86_64";
         hash = "sha256-PsleIv30BcVejl2fp3XDMG93eJKbfIe/A3hsjpsUVog=";
-        nativeBuildInputs = [ autoPatchelfHook ];
-        buildInputs = [
-          libX11
-          libva
-        ];
       }
     else if isDarwin && isAarch64 then
       {
         platform = "macosx_14_0_arm64";
         hash = "sha256-a/Fr14/J1pwbpgCm4wCXk3VlBC9RbgYCsfzVoXyYIGI=";
-        nativeBuildInputs = [ ];
-        buildInputs = [ ];
       }
     else
       throw "unsupported target";
@@ -56,10 +51,14 @@ buildPythonPackage rec {
   };
   pythonImportsCheck = [ "sora_sdk" ];
 
-  inherit (platformData)
-    nativeBuildInputs
-    buildInputs
-    ;
+  buildInputs = optionals isLinux [
+    libX11
+    libva
+  ];
+
+  nativeBuildInputs = optionals isLinux [ autoPatchelfHook ];
+
+  dependencies = [ numpy ];
 
   meta = {
     description = "WebRTC SFU Sora Python SDK";
