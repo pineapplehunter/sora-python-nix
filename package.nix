@@ -9,26 +9,18 @@
   stdenv,
 }:
 let
-  inherit (stdenv)
-    isLinux
-    isDarwin
-    isx86_64
-    isAarch64
-    ;
-  inherit (lib) optionals;
   platformData =
-    if isLinux && isx86_64 then
-      {
+    {
+      x86_64-linux = {
         platform = "manylinux_2_17_x86_64.manylinux2014_x86_64";
         hash = "sha256-PsleIv30BcVejl2fp3XDMG93eJKbfIe/A3hsjpsUVog=";
-      }
-    else if isDarwin && isAarch64 then
-      {
+      };
+      aarch64-darwin = {
         platform = "macosx_14_0_arm64";
         hash = "sha256-a/Fr14/J1pwbpgCm4wCXk3VlBC9RbgYCsfzVoXyYIGI=";
-      }
-    else
-      throw "unsupported target";
+      };
+    }
+    .${stdenv.hostPlatform.system};
 in
 buildPythonPackage rec {
   pname = "sora-sdk";
@@ -37,28 +29,25 @@ buildPythonPackage rec {
 
   src = fetchPypi {
     pname = "sora_sdk";
-    inherit
-      version
-      format
-      ;
-    inherit (platformData)
-      platform
-      hash
-      ;
+    inherit version format;
+    inherit (platformData) platform hash;
     python = "cp312";
     abi = "cp312";
     dist = "cp312";
   };
-  pythonImportsCheck = [ "sora_sdk" ];
 
-  buildInputs = optionals isLinux [
+  buildInputs = lib.optionals stdenv.hostPlatform.isLinux [
     libX11
     libva
   ];
 
-  nativeBuildInputs = optionals isLinux [ autoPatchelfHook ];
+  nativeBuildInputs = lib.optionals stdenv.hostPlatform.isLinux [
+    autoPatchelfHook
+  ];
 
   dependencies = [ numpy ];
+
+  pythonImportsCheck = [ "sora_sdk" ];
 
   meta = {
     description = "WebRTC SFU Sora Python SDK";
