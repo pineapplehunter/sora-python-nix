@@ -7,6 +7,8 @@
   lib,
   numpy,
   stdenv,
+  pythonOlder,
+  pythonAtLeast,
 }:
 let
   platformData =
@@ -26,6 +28,8 @@ buildPythonPackage rec {
   pname = "sora-sdk";
   version = "2024.3.0";
   format = "wheel";
+
+  disabled = pythonOlder "3.11" || pythonAtLeast "3.13";
 
   src = fetchPypi {
     pname = "sora_sdk";
