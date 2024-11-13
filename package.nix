@@ -29,7 +29,7 @@ buildPythonPackage rec {
   version = "2024.3.0";
   format = "wheel";
 
-  disabled = pythonOlder "3.11" || pythonAtLeast "3.13";
+  disabled = pythonOlder "3.12" || pythonAtLeast "3.13";
 
   src = fetchPypi {
     pname = "sora_sdk";
