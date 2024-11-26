@@ -1,43 +1,37 @@
 {
-  buildPythonPackage,
-  fetchPypi,
   autoPatchelfHook,
+  buildPythonPackage,
+  fetchurl,
+  lib,
   libX11,
   libva,
-  lib,
   numpy,
+  python,
   stdenv,
-  pythonOlder,
-  pythonAtLeast,
 }:
 let
-  platformData =
-    {
-      x86_64-linux = {
-        platform = "manylinux_2_17_x86_64.manylinux2014_x86_64";
-        hash = "sha256-PsleIv30BcVejl2fp3XDMG93eJKbfIe/A3hsjpsUVog=";
-      };
-      aarch64-darwin = {
-        platform = "macosx_14_0_arm64";
-        hash = "sha256-a/Fr14/J1pwbpgCm4wCXk3VlBC9RbgYCsfzVoXyYIGI=";
-      };
-    }
-    .${stdenv.hostPlatform.system};
+  version = lib.strings.trim (builtins.readFile ./version.txt);
+  sources = builtins.fromJSON (builtins.readFile ./sources.json);
+  cp =
+    let
+      inherit (python.sourceVersion) major minor;
+    in
+    "cp${major}${minor}";
+  source_key =
+    if stdenv.hostPlatform.isDarwin then
+      "sora_sdk-${version}-${cp}-${cp}-macosx_14_0_arm64.whl"
+    else
+      "sora_sdk-${version}-${cp}-${cp}-manylinux_2_17_x86_64.manylinux2014_x86_64.whl";
 in
-buildPythonPackage rec {
+buildPythonPackage {
   pname = "sora-sdk";
-  version = "2024.3.0";
+  inherit version;
   format = "wheel";
 
-  disabled = pythonOlder "3.12" || pythonAtLeast "3.13";
+  disabled = !builtins.hasAttr source_key sources;
 
-  src = fetchPypi {
-    pname = "sora_sdk";
-    inherit version format;
-    inherit (platformData) platform hash;
-    python = "cp312";
-    abi = "cp312";
-    dist = "cp312";
+  src = fetchurl {
+    inherit (sources.${source_key}) url sha256;
   };
 
   buildInputs = lib.optionals stdenv.hostPlatform.isLinux [

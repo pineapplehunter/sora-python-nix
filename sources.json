@@ -1,0 +1,54 @@
+{
+  "sora_sdk-2024.3.0-cp310-cp310-macosx_13_0_arm64.whl": {
+    "url": "https://files.pythonhosted.org/packages/5d/8c/d6160044aae45b38f5f6b0603b5ebe3388106a7332a04482f755c00cbda4/sora_sdk-2024.3.0-cp310-cp310-macosx_13_0_arm64.whl",
+    "sha256": "24b524b68b37480eee639827cb438550a17b8e86ef0db2c338c198328a34c74b"
+  },
+  "sora_sdk-2024.3.0-cp310-cp310-macosx_14_0_arm64.whl": {
+    "url": "https://files.pythonhosted.org/packages/c8/fb/366126617b49c98bd18e1caf490588cb9b13193526ba2235ad2d2f65dc49/sora_sdk-2024.3.0-cp310-cp310-macosx_14_0_arm64.whl",
+    "sha256": "367a4f00fe0ecf2c98f7fb80659716d789a39b5d3a6a2887879753a8b3cf12b8"
+  },
+  "sora_sdk-2024.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl": {
+    "url": "https://files.pythonhosted.org/packages/60/d2/893f4064cf27018aed6636880516066592e830c679b63f31b2c9dafab314/sora_sdk-2024.3.0-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "sha256": "24b83e0d215aa3cca63ddfb113d9b113e9698767bc2be613eb1d00a34e743be4"
+  },
+  "sora_sdk-2024.3.0-cp310-cp310-win_amd64.whl": {
+    "url": "https://files.pythonhosted.org/packages/47/60/9a6404308804ade753aadefcd0080325c739584dbd8daf9865d2ab9304bd/sora_sdk-2024.3.0-cp310-cp310-win_amd64.whl",
+    "sha256": "5f3298c18bcbed602fe05208710755a60c8c89e3f9b0bd9881495eecf04e6d6a"
+  },
+  "sora_sdk-2024.3.0-cp311-cp311-macosx_13_0_arm64.whl": {
+    "url": "https://files.pythonhosted.org/packages/01/a4/4b5bc365bbcd6b62b8f331a9dce21b9d23b478bae85dabc277f980d7e75c/sora_sdk-2024.3.0-cp311-cp311-macosx_13_0_arm64.whl",
+    "sha256": "f1750d14d04be8b214e78e1f6d3e24b926b09cbfb5257656522ff4b3b6809919"
+  },
+  "sora_sdk-2024.3.0-cp311-cp311-macosx_14_0_arm64.whl": {
+    "url": "https://files.pythonhosted.org/packages/43/9b/3cc3fae3089e9e06aeddb7a3f5211b34fbb390a79e5e4df669d190370e67/sora_sdk-2024.3.0-cp311-cp311-macosx_14_0_arm64.whl",
+    "sha256": "f6cb4900b19d80b447a04eb41cd81b1abb4381952cf79550e9aa85260da95e38"
+  },
+  "sora_sdk-2024.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl": {
+    "url": "https://files.pythonhosted.org/packages/03/a3/675e39fb9b58f4c54d57ce9192ee0d05cb4a5e752a1aaf58cf887e28bbda/sora_sdk-2024.3.0-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "sha256": "d0c21ade90c9773f06c060632e40301135bdad1dc83b37e94a57d7077b6c5ec0"
+  },
+  "sora_sdk-2024.3.0-cp311-cp311-win_amd64.whl": {
+    "url": "https://files.pythonhosted.org/packages/86/cf/4da900604e2f750f0dcc4c9eb85b0603b9edc7d984e119876a96637a1639/sora_sdk-2024.3.0-cp311-cp311-win_amd64.whl",
+    "sha256": "8d20aba0d9f962ad5b2319f1813841ee7321714cfdcf842a5f8abbef4fb904c9"
+  },
+  "sora_sdk-2024.3.0-cp312-cp312-macosx_13_0_arm64.whl": {
+    "url": "https://files.pythonhosted.org/packages/06/1a/82fe232fc0e7adbca7c20d277d78cbc728911f1f44eda87d06247458c2f9/sora_sdk-2024.3.0-cp312-cp312-macosx_13_0_arm64.whl",
+    "sha256": "5e11b8f262e7fb0e5be171de016a16e98695ab51ad060b3c02b98c987a2521de"
+  },
+  "sora_sdk-2024.3.0-cp312-cp312-macosx_14_0_arm64.whl": {
+    "url": "https://files.pythonhosted.org/packages/bc/c1/064483f1e5c929ad674887ba0bfaa9c288e00a8224be4df636e05df9111c/sora_sdk-2024.3.0-cp312-cp312-macosx_14_0_arm64.whl",
+    "sha256": "6bf16bd78fc9d69c1ba600a6e30097937565042f516e0602b1fcd5a17c982062"
+  },
+  "sora_sdk-2024.3.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl": {
+    "url": "https://files.pythonhosted.org/packages/1d/b3/492b2994516cec9f060cf265c4d441fbfacc95b2361212b103477a0c7707/sora_sdk-2024.3.0-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "sha256": "3ec95e22fdf405c55e8e5d9fa775c3306f7778929b7c87bf03786c8e9b145688"
+  },
+  "sora_sdk-2024.3.0-cp312-cp312-win_amd64.whl": {
+    "url": "https://files.pythonhosted.org/packages/d7/c4/56b2c8ca03eabebd7e6c5b10658f36c121c15ccc46a66c033b9140c3bb0f/sora_sdk-2024.3.0-cp312-cp312-win_amd64.whl",
+    "sha256": "9cffbbb651d452f68b9d4c557dd36f1bc0cf0b4bc355e30509922186e384afb8"
+  },
+  "sora_sdk-2024.3.0.tar.gz": {
+    "url": "https://files.pythonhosted.org/packages/49/3d/99d197a3a78cf27290b77d7656757a2106f5150f51ff80145732d780af69/sora_sdk-2024.3.0.tar.gz",
+    "sha256": "7281a8c04d4ad2b9c4c888fc9378bfb6a8c5bd971c8079468c347598da113488"
+  }
+}
